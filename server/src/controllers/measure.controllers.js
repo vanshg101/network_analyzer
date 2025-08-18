@@ -9,15 +9,15 @@ const sendData = async (req, res) => {
     throw new ApiError(400, "Missing required fields");
   }
 
-  const entry = new SpeedTest({
-    ip: ip || "Unknown", // fallback if IP unavailable
-    provider: ip || "Unknown",
-    latitude: latitude || null,
-    longitude: longitude || null,
-    downloadSpeedMbps: downloadSpeed,
-    uploadSpeedMbps: uploadSpeed,
-    pingMs: ping,
-  });
+    const entry = new SpeedTest({
+      ip: ip || "Unknown",
+      provider: ip || "Unknown",
+      latitude: latitude || null,
+      longitude: longitude || null,
+      downloadSpeedMbps: downloadSpeed,
+      uploadSpeedMbps: uploadSpeed,
+      pingMs: ping,
+    });
 
   await entry.save();
   res.json({ success: true, data: entry });
